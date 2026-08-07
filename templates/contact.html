@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Contact Us | DriveEase</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <!-- Navigation Bar -->
+    <header>
+        <nav class="navbar">
+
+            <div class="logo">
+                DriveEase
+            </div>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cars">Cars</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact" class="active">Contact</a></li>
+                {% if session['user_id'] %}
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/profile">My profile</a></li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                {%endif%}
+
+
+        </nav>
+    </header>
+
+
+    <!-- Contact Hero -->
+    <section class="contact-hero">
+
+        <div class="contact-hero-content">
+
+            <h1>Get In Touch</h1>
+
+            <p>
+                Have a question about our cars or rental services?
+                We're here to help.
+            </p>
+
+        </div>
+
+    </section>
+
+
+    <!-- Contact Section -->
+    <section class="contact-section">
+
+        <div class="contact-container">
+
+
+            <!-- Contact Information -->
+            <div class="contact-info">
+
+                <h2>Let's Talk</h2>
+
+                <p class="contact-description">
+                    Whether you need help choosing a car,
+                    have questions about your booking,
+                    or need assistance, feel free to contact us.
+                </p>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        📍
+                    </div>
+
+                    <div>
+                        <h3>Our Location</h3>
+                        <p>Ahmednagar, Maharashtra, India</p>
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        📞
+                    </div>
+
+                    <div>
+                        <h3>Phone Number</h3>
+                        <p>+91 98765 43210</p>
+                    </div>
+
+                </div>
+
+
+                <div class="info-item">
+
+                    <div class="info-icon">
+                        ✉
+                    </div>
+
+                    <div>
+                        <h3>Email Address</h3>
+                        <p>deshmukhsiddhi042@gmail.com</p>
+                    </div>
+
+                </div>
+
+            </div>
+
+
+            <!-- Contact Form -->
+            <div class="contact-form">
+
+                <h2>Send Us a Message</h2>
+
+                <form action="/contact" method="POST">
+
+                    <div class="input-group">
+
+                        <label>Full Name</label>
+
+                        <input
+                            type="text"
+                            name="name"
+                            placeholder="Enter your name"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Email Address</label>
+
+                        <input
+                            type="email"
+                            name="email"
+                            placeholder="Enter your email"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Subject</label>
+
+                        <input
+                            type="text"
+                            name="subject"
+                            placeholder="Enter subject"
+                            required
+                        >
+
+                    </div>
+
+
+                    <div class="input-group">
+
+                        <label>Message</label>
+
+                        <textarea
+                            name="message"
+                            rows="5"
+                            placeholder="Write your message here..."
+                            required
+                        ></textarea>
+
+                    </div>
+
+
+                    <button type="submit">
+                        Send Message
+                    </button>
+
+                </form>
+
+            </div>
+
+        </div>
+
+    </section>
+
+
+    <!-- Footer -->
+    <footer>
+
+        <div class="footer-content">
+
+            <h2>DriveEase</h2>
+
+            <p>
+                Your journey, our responsibility.
+            </p>
+
+        </div>
+
+        <p class="copyright">
+            © 2026 DriveEase Car Rental | All Rights Reserved
+        </p>
+
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Add Car | DriveEase</title>
+
+    <link rel="stylesheet"
+          href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+    <div class="add-car-container">
+
+        <h1>Add New Car</h1>
+
+        <p>Add a new car to your rental collection</p>
+
+        <form action="/add_car" method="post">
+
+            <!-- Car Name -->
+            <label>Car Name</label>
+
+            <input
+                type="text"
+                name="car_name"
+                placeholder="Example: Creta"
+                required
+            >
+
+
+            <!-- Brand -->
+            <label>Brand</label>
+
+            <input
+                type="text"
+                name="brand"
+                placeholder="Example: Hyundai"
+                required
+            >
+
+
+            <!-- Fuel Type -->
+            <label>Fuel Type</label>
+
+            <select name="fuel_type" required>
+
+                <option value="">
+                    Select Fuel Type
+                </option>
+
+                <option value="Petrol">
+                    Petrol
+                </option>
+
+                <option value="Diesel">
+                    Diesel
+                </option>
+
+                <option value="CNG">
+                    CNG
+                </option>
+
+                <option value="Electric">
+                    Electric
+                </option>
+
+            </select>
+
+
+            <!-- Seats -->
+            <label>Number of Seats</label>
+
+            <input
+                type="number"
+                name="seats"
+                min="2"
+                max="10"
+                placeholder="Example: 5"
+                required
+            >
+
+
+            <!-- Price -->
+            <label>Price Per Day (₹)</label>
+
+            <input
+                type="number"
+                name="price_per_day"
+                min="0"
+                placeholder="Example: 2500"
+                required
+            >
+
+
+            <!-- Image -->
+            <label>Image File Name</label>
+
+            <input
+                type="text"
+                name="image"
+                placeholder="Example: creta.webp"
+                
+            >
+
+
+            <!-- Availability -->
+            <label>Availability</label>
+
+            <select name="available" required>
+
+                <option value="1">
+                    Available
+                </option>
+
+                <option value="0">
+                    Not Available
+                </option>
+
+            </select>
+
+
+            <!-- Buttons -->
+
+            <div class="add-car-buttons">
+
+                <button
+                    type="submit"
+                    class="submit-btn">
+                    Add Car
+                </button>
+
+                <a
+                    href="/admin"
+                    class="reset-btn">
+                    Cancel
+                </a>
+
+            </div>
+
+        </form>
+
+    </div>
+
+</body>
+</html>

@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+    <meta charset="UTF-8">
+
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Book Your Car | DriveEase</title>
+
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+
+<body>
+
+
+    <!-- ================= NAVBAR ================= -->
+
+    <header>
+
+        <nav class="navbar">
+
+            <div class="logo">
+                DriveEase
+            </div>
+
+            <ul class="nav-links">
+
+                <li>
+                    <a href="/">Home</a>
+                </li>
+
+                <li>
+                    <a href="/cars">Cars</a>
+                </li>
+
+                <li>
+                    <a href="/about">About</a>
+                </li>
+
+                <li>
+                    <a href="/contact">Contact</a>
+                </li>
+                {% if session['user_id'] %}
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/profile">My profile</a></li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                {%endif%}
+
+            </ul>
+
+        </nav>
+
+    </header>
+
+
+    <!-- ================= BOOKING SECTION ================= -->
+
+    <section class="booking-section">
+
+
+        <div class="booking-container">
+
+
+            <div class="booking-heading">
+
+                <h1>
+                    Car Rental Booking
+                </h1>
+
+                <p>
+                    Fill in your details to book your car.
+                </p>
+
+            </div>
+
+
+            <form action="/booking" method="post" class="booking-form">
+
+
+                <!-- CUSTOMER DETAILS -->
+
+                <h2>
+                    Customer Details
+                </h2>
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Customer Name
+                        </label>
+
+                        <input type="text" name="customer_name" placeholder="Enter your full name" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Email
+                        </label>
+
+                        <input type="email" name="email" placeholder="Enter your email" required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Mobile Number
+                        </label>
+
+                        <input type="tel" name="mobile" placeholder="Enter mobile number" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Driving License Number
+                        </label>
+
+                        <input type="text" name="driving_license" placeholder="Enter driving license number" required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- CAR DETAILS -->
+
+                <h2>
+                    Rental Details
+                </h2>
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Select Car
+                        </label>
+
+                        <select name="car_id" required>
+
+                            <option value="">
+                                -- Select Available Car --
+                            </option>
+
+
+                            {% for car in cars %}
+
+                            <option value="{{ car.id }}">
+
+                                {{ car.brand }}
+                                {{ car.car_name }}
+                                - ₹{{ car.price_per_day }}/day
+
+                            </option>
+
+                            {% endfor %}
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Pickup Date
+                        </label>
+
+                        <input type="date" name="pickup_date" required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Return Date
+                        </label>
+
+                        <input type="date" name="return_date" required>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Pickup Time
+                        </label>
+
+                        <input type="time" name="pickup_time" required>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- GENDER -->
+
+                <div class="form-group">
+
+                    <label>
+                        Gender
+                    </label>
+
+
+                    <div class="radio-group">
+
+                        <label>
+                            <input type="radio" name="gender" value="Male" required>
+
+                            Male
+                        </label>
+
+
+                        <label>
+                            <input type="radio" name="gender" value="Female">
+
+                            Female
+                        </label>
+
+
+                        <label>
+                            <input type="radio" name="gender" value="Other">
+
+                            Other
+                        </label>
+
+                    </div>
+
+                </div>
+
+
+
+                <!-- EXTRA SERVICES -->
+
+                <h2>
+                    Extra Services
+                </h2>
+
+
+                <div class="checkbox-group">
+
+
+                    <label>
+
+                        <input type="checkbox" name="extra_services" value="Driver">
+
+                        Driver
+
+                    </label>
+
+
+                    <label>
+
+                        <input type="checkbox" name="extra_services" value="GPS">
+
+                        GPS
+
+                    </label>
+
+
+                    <label>
+
+                        <input type="checkbox" name="extra_services" value="Child Seat">
+
+                        Child Seat
+
+                    </label>
+
+
+                </div>
+
+
+
+                <!-- PAYMENT -->
+
+                <h2>
+                    Payment & Address
+                </h2>
+
+
+                <div class="form-row">
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Payment Method
+                        </label>
+
+                        <select name="payment_method" required>
+
+                            <option value="">
+                                -- Select Payment Method --
+                            </option>
+
+                            <option value="Cash">
+                                Cash
+                            </option>
+
+                            <option value="Credit Card">
+                                Credit Card
+                            </option>
+
+                            <option value="Debit Card">
+                                Debit Card
+                            </option>
+
+                            <option value="UPI">
+                                UPI
+                            </option>
+
+                        </select>
+
+                    </div>
+
+
+                    <div class="form-group">
+
+                        <label>
+                            Address
+                        </label>
+
+                        <textarea name="address" placeholder="Enter your complete address" required></textarea>
+
+                    </div>
+
+
+                </div>
+
+
+
+                <!-- TERMS -->
+
+                <div class="terms-group">
+
+                    <label>
+
+                        <input type="checkbox" name="terms" value="yes" required>
+
+                        I agree to the
+                        <a href="#">
+                            Terms and Conditions
+                        </a>
+
+                    </label>
+
+                </div>
+
+
+
+                <!-- BUTTONS -->
+
+                <div class="booking-buttons">
+
+                    <button type="submit" class="submit-btn">
+
+                        Submit Booking
+
+                    </button>
+
+
+                    <button type="reset" class="reset-btn">
+
+                        Reset
+
+                    </button>
+
+                </div>
+
+
+            </form>
+
+
+        </div>
+
+
+    </section>
+
+
+
+    <!-- ================= FOOTER ================= -->
+
+    <footer>
+
+        <p>
+            © 2026 DriveEase Car Rental
+        </p>
+
+    </footer>
+
+
+</body>
+
+</html>

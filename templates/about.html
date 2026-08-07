@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>About Us | DriveEase</title>
+
+    <!-- Google Font -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+
+<header>
+
+    <nav class="navbar">
+
+        <div class="logo">
+            DriveEase
+        </div>
+
+        <ul class="nav-links">
+
+            <li>
+                <a href="/">Home</a>
+            </li>
+
+            <li>
+                <a href="/cars">Cars</a>
+            </li>
+            <li>
+            <a href="/about" class="active">About</a>
+            </li>
+
+            <li>
+                <a href="/contact">Contact</a>
+            </li>
+
+            {% if session['user_id'] %}
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/profile">My profile</a></li>
+            {% else %}
+                <li><a href="/login">Login</a></li>
+            {%endif%}
+
+        </ul>
+
+    </nav>
+
+</header>
+
+
+<!-- ================= ABOUT HERO ================= -->
+
+<section class="about-hero">
+
+    <div class="about-hero-content">
+
+        <h1>About DriveEase</h1>
+
+        <p>
+            Making every journey comfortable,
+            convenient and unforgettable.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= ABOUT INTRO ================= -->
+
+<section class="about-intro">
+
+    <div class="about-image">
+
+        <img
+        src="https://images.unsplash.com/photo-1449965408869-eaa3f722e40d?auto=format&fit=crop&w=900&q=80"
+        alt="Car on Road">
+
+    </div>
+
+
+    <div class="about-text">
+
+        <h2>Who We Are</h2>
+
+        <p>
+            Welcome to <strong>DriveEase</strong>, your trusted
+            car rental partner. We provide reliable and
+            affordable cars for every type of journey.
+        </p>
+
+        <p>
+            Whether you are planning a family vacation,
+            a business trip or a weekend adventure,
+            we make it easy to find and rent the perfect car.
+        </p>
+
+        <p>
+            Our goal is to provide a simple, transparent
+            and convenient car rental experience for everyone.
+        </p>
+
+        <a href="/cars" class="about-btn">
+            Explore Our Cars
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= WHY CHOOSE US ================= -->
+
+<section class="about-features">
+
+    <div class="section-heading">
+
+        <h2>Why Choose DriveEase?</h2>
+
+        <p>
+            We focus on providing the best experience
+            for every customer.
+        </p>
+
+    </div>
+
+
+    <div class="feature-container">
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🚗
+            </div>
+
+            <h3>Wide Range of Cars</h3>
+
+            <p>
+                Choose from a variety of cars
+                suitable for your needs and budget.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                💰
+            </div>
+
+            <h3>Affordable Prices</h3>
+
+            <p>
+                Enjoy competitive rental prices
+                with transparent pricing.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                🛡️
+            </div>
+
+            <h3>Safe & Reliable</h3>
+
+            <p>
+                Our vehicles are regularly maintained
+                to ensure a safe journey.
+            </p>
+
+        </div>
+
+
+        <div class="feature-card">
+
+            <div class="feature-icon">
+                📞
+            </div>
+
+            <h3>24/7 Support</h3>
+
+            <p>
+                Our support team is always ready
+                to assist you whenever you need.
+            </p>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= MISSION ================= -->
+
+<section class="mission">
+
+    <div class="mission-content">
+
+        <h2>Our Mission</h2>
+
+        <p>
+            Our mission is to make car rental simple,
+            affordable and accessible to everyone.
+            We believe that every journey should be
+            comfortable and stress-free.
+        </p>
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <div class="footer-content">
+
+        <h2>DriveEase</h2>
+
+        <p>
+            Your journey, our responsibility.
+        </p>
+
+    </div>
+
+    <p class="copyright">
+        © 2026 DriveEase Car Rental | All Rights Reserved
+    </p>
+
+</footer>
+
+
+</body>
+
+</html>

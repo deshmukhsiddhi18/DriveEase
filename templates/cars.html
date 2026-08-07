@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveEase car rental</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">DriveEase</h2>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cars">Cars</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if session['user_id'] %}
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/profile">My profile</a></li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                {%endif%}
+            </ul>
+        </nav>
+    </header>
+
+    <section class="page-title">
+        <h1>Available Cars</h1>
+        <h3><b>Choose the perfect car for your next journy.</b></h3>
+    </section>
+
+    <section class="cars">
+        <div class="car-container">
+            
+             {% for car in cars %}
+            <div class="card">
+                <img src="{{url_for('static',filename='images/' +car.image) }}" alt={{car.car_name}}>
+                <h3>{{ car.brand }} {{car.car_name}}</h3>
+                <p>Fuel: {{car.fuel_type}}</p>
+                <p>Seats: {{ car.seats }}</p>
+                <p class="price">₹{{ car.price_per_day}} /Day</p>
+                <a href="/booking">
+                    <button type="button">book now</button>
+                </a>    
+            </div>
+            {% endfor %}  
+        </div>
+
+    </section>
+</body>
+</html>
