@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | DriveEase</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+     <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">DriveEase</h2>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cars">Cars</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                <li><a href="/login">Login</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <section class="login-section">
+        
+        <div class="login-box">
+
+            <form action="/login" method="post">
+
+               <h2>User login<h2>
+
+               <input type="email" name="email" placeholder="Enter Email"  required>
+
+               <input type="password" name="password" placeholder="Enter Password" required>
+
+               <button type="submit">Login</button>
+
+            </form>
+            
+            <p>
+                Don't have an account?
+                <a href="/register">register</a>
+            </p>
+
+        </div>
+
+    </section>
+
+    <footer>
+        <p>
+            &copy; DriveEase Car Rental
+        </p>
+    </footer>
+</body>
+</html>
