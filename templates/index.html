@@ -1,1 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DriveEase Car Rental</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
 
+    <!-- Navbar -->
+    <header>
+        <nav class="navbar">
+            <h2 class="logo">DriveEase</h2>
+
+            <ul class="nav-links">
+                <li><a href="/">Home</a></li>
+                <li><a href="/cars">Cars</a></li>
+                <li><a href="/about">About</a></li>
+                <li><a href="/contact">Contact</a></li>
+                {% if session['user_id'] %}
+                <li><a href="/logout">Logout</a></li>
+                <li><a href="/profile">My profile</a></li>
+                {% else %}
+                <li><a href="/login">Login</a></li>
+                {%endif%}
+            </ul>
+
+
+        </nav>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-content">
+            <h1>Rent Your Dream Car</h1>
+            <p>Luxury • Comfort • Affordable Prices</p>
+            <a href="/booking" class="btn">Book Now</a>
+        </div>
+    </section>
+
+    <!-- Featured Cars -->
+    <section class="cars">
+        <h2>Featured Cars</h2>
+
+        <div class="car-container">
+
+            <div class="card">
+                <img src="{{url_for('static',filename='images/creata.webp')}}" alt="Car">
+                <h3>Hyundai Creta</h3>
+                <p>₹2500 / Day</p>
+                <a href="/cars"><button >
+                    View Details
+                </button></a>
+            </div>
+
+            <div class="card">
+                <img src="{{url_for('static',filename='images/mahindrathar.webp')}}" alt="Car">
+                <h3>Mahindra Thar</h3>
+                <p>₹3500 / Day</p>
+                <a href="/cars"><button>
+                    View Details
+                </button></a>
+            </div>
+
+            <div class="card">
+                <img src="{{url_for('static',filename='images/tatanexon.webp')}}" alt="Car">
+                <h3>Tata Nexon</h3>
+                <p>₹2200 / Day</p>
+                <a href="/cars"><button>
+                    View Details
+                </button></a>
+            </div>
+
+        </div>
+    </section>
+
+    <!-- Why Choose Us -->
+    <section class="services">
+        <h2>Why Choose DriveEase?</h2>
+
+        <div class="service-box">
+            <div>
+                <h3>Affordable Prices</h3>
+                <p>Best rental rates with no hidden charges.</p>
+            </div>
+
+            <div>
+                <h3>24x7 Support</h3>
+                <p>Customer support available anytime.</p>
+            </div>
+
+            <div>
+                <h3>Verified Cars</h3>
+                <p>Clean, serviced and insured vehicles.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>© 2026 DriveEase Car Rental | All Rights Reserved</p>
+    </footer>
+
+</body>
+</html>
