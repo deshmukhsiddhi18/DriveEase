@@ -14,11 +14,3 @@ def get_connection():
         database=os.getenv("MYSQL_DATABASE"),   # <-- changed
        port = int(os.getenv("MYSQLPORT", 3306))
     )
-
-try:
-    conn = get_connection()
-    print("DATABASE CONNECTION: SUCCESS")
-    conn.close()
-except Exception as e:
-    print("DATABASE CONNECTION: FAILED")
-    print("ERROR:", e)
