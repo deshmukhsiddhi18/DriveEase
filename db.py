@@ -13,4 +13,7 @@ def get_connection():
         password=os.getenv("MYSQLPASSWORD"),
         database=os.getenv("MYSQL_DATABASE"),   # <-- changed
        port = int(os.getenv("MYSQLPORT", 3306))
+       
     )
+   conn.database = "railway"
+   return conn
