@@ -17,4 +17,4 @@ def get_connection():
 
     conn.database = "railway"
 
-    return conn
+
