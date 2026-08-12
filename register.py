@@ -1,13 +1,14 @@
-from flask import Blueprint, render_template,request,session,redirect 
+from flask import Blueprint, render_template, request, session, redirect
 
 from db import get_connection
 
+register_bp = Blueprint("register", __name__)
 
-register_bp = Blueprint("register" , __name__)
-@register_bp.route("/register")
+@register_bp.route("/register", methods=["GET", "POST"])
 def register():
     db = get_connection()
-    if request.method == "POST":    
+
+    if request.method == "POST":
         firstname = request.form["firstname"]
         lastname = request.form["lastname"]
         email = request.form["email"]
@@ -29,12 +30,13 @@ def register():
             phone,
             password
         )
-        
-        cursor.execute(query, values)
 
+        cursor.execute(query, values)
         db.commit()
 
         cursor.close()
+        db.close()
 
         return render_template("login.html")
+
     return render_template("register.html")
