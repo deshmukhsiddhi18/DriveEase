@@ -12,7 +12,7 @@ def login():
         email = request.form["email"]
         password = request.form["password"]
 
-        cursor = db.cursor(dictionary=True)
+        cursor = db.cursor()
 
         cursor.execute(
             "SELECT * FROM users WHERE email = %s",
