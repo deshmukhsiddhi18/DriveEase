@@ -14,6 +14,6 @@ def get_connection():
         password=os.getenv("MYSQLPASSWORD"),
         port=int(os.getenv("MYSQLPORT", "3306"))
     )
-
+    return conn
   
 
