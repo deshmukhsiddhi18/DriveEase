@@ -15,6 +15,5 @@ def get_connection():
         port=int(os.getenv("MYSQLPORT", "3306"))
     )
 
-    conn.database = "railway"
-
+  
 
