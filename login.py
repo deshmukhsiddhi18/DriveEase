@@ -44,6 +44,7 @@ def login():
         cursor.close()
         db.close()
 
-        return redirect(url_for("index"))
+        return render_template("login.html")
 
-    return render_template("login.html")
+    
+    return redirect(url_for("index"))
