@@ -3,7 +3,7 @@ from db import get_connection
 
 login_bp = Blueprint("login", __name__)
 db = get_connection()
-
+print("connected")
 @login_bp.route("/login", methods=["GET", "POST"])
 def login():
    
